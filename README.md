@@ -25,4 +25,18 @@ Modified 1.7m-2.2m blocks per second.
 **Note: Other forks of softwares listed above may work. The fork will need the Bukkit API present and optionally, NMS.**
 
 # Maven/Gradle Dependency:
-**Coming soon!**
+### Maven:
+```xml
+<dependency>
+  <groupId>me.byteful.lib</groupId>
+  <artifactId>blockeditapi</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+### Gradle
+```kotlin
+dependencies {
+  compile "me.byteful.lib:blockeditapi:1.0.0"
+}
+```
+**[ ! ] Note: Make sure you relocate BlockEditAPI to prevent any dependency collison issues during runtime. [ ! ]**
