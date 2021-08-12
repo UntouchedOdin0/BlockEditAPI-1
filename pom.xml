@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>me.byteful.lib</groupId>
+  <artifactId>blockeditapi</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>BlockEditAPI</name>
+  <description>A Spigot library that contains speedy block modification utilities.</description>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>spigotmc-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+
+    <repository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!--> [!] SpigotMC API [!] <-->
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot-api</artifactId>
+      <version>1.8.8-R0.1-SNAPSHOT</version> <!--> 1.8.8 used for best compatibility with the BUKKIT option. <-->
+      <scope>provided</scope>
+    </dependency>
+
+    <!--> [!] NMS Libraries (Yes, I know the '.' workaround is messy and hacky...) [!] <-->
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.8-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc.</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.8.3-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc..</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.8.8-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc...</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.9-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc....</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.9.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc.....</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.10.2-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc......</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.11-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc.......</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.12.2-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc.........</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.13-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc..........</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.13.1-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc.............</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.14.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc..............</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.15-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc...............</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.1-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc................</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.2-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc.................</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.16.5-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.spigotmc..................</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.17-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--> [!] Development Libraries [!] <-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.20</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>21.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
