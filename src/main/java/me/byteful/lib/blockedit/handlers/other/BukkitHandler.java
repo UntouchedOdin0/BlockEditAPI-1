@@ -10,7 +10,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class BukkitHandler implements Implementation {
   @Override
-  public void setBlock(@NotNull BlockLocation location, @NotNull Material material, @Nullable MaterialData data, boolean applyPhysics) {
+  public void setBlock(
+      @NotNull BlockLocation location,
+      @NotNull Material material,
+      @Nullable MaterialData data,
+      boolean applyPhysics) {
     final BlockState state = location.getBlock().getState();
     state.setType(material);
     state.setData(data);

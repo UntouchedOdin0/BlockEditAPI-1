@@ -8,13 +8,25 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * A simple class to easily handle block locations.
- */
+/** A simple class to easily handle block locations. */
 @Data(staticConstructor = "of")
 public final class BlockLocation {
   private final String world;
-  private final int x,y,z;
+  private final int x, y, z;
+
+  @NotNull
+  public static BlockLocation fromLocation(@NotNull final Location location) {
+    return new BlockLocation(
+        location.getWorld().getName(),
+        location.getBlockX(),
+        location.getBlockY(),
+        location.getBlockZ());
+  }
+
+  @NotNull
+  public static BlockLocation fromBlock(@NotNull final Block block) {
+    return fromLocation(block.getLocation());
+  }
 
   @NotNull
   public Block getBlock() {
@@ -34,15 +46,5 @@ public final class BlockLocation {
   @NotNull
   public Chunk getChunk() {
     return getLocation().getChunk();
-  }
-
-  @NotNull
-  public static BlockLocation fromLocation(@NotNull final Location location) {
-    return new BlockLocation(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
-  }
-
-  @NotNull
-  public static BlockLocation fromBlock(@NotNull final Block block) {
-    return fromLocation(block.getLocation());
   }
 }

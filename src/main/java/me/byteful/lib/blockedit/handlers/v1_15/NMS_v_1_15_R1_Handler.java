@@ -17,15 +17,22 @@ public class NMS_v_1_15_R1_Handler implements Implementation {
   private final BlockEditOption option;
 
   @Override
-  public void setBlock(@NotNull BlockLocation location, @NotNull Material material, @Nullable MaterialData data, boolean applyPhysics) {
+  public void setBlock(
+      @NotNull BlockLocation location,
+      @NotNull Material material,
+      @Nullable MaterialData data,
+      boolean applyPhysics) {
     final World world = ((CraftWorld) location.getWorld()).getHandle();
     final BlockPosition bp = new BlockPosition(location.getX(), location.getY(), location.getZ());
-    final IBlockData bd = data == null ? CraftMagicNumbers.getBlock(material).getBlockData() : Block.getByCombinedId(material.getId() + (data.getData() << 12));
+    final IBlockData bd =
+        data == null
+            ? CraftMagicNumbers.getBlock(material).getBlockData()
+            : Block.getByCombinedId(material.getId() + (data.getData() << 12));
 
-    if(option == BlockEditOption.NMS_SAFE) {
+    if (option == BlockEditOption.NMS_SAFE) {
       world.setTypeAndData(bp, bd, applyPhysics ? 3 : 2);
-    } else if(option == BlockEditOption.NMS_FAST) {
-      if(!location.getChunk().isLoaded()) {
+    } else if (option == BlockEditOption.NMS_FAST) {
+      if (!location.getChunk().isLoaded()) {
         location.getChunk().load(true);
       }
 

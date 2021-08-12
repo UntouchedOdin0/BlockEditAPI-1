@@ -6,9 +6,11 @@ import org.bukkit.material.MaterialData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * The main interface to implement all methods used by BlockEditAPI.
- */
+/** The main interface to implement all methods used by BlockEditAPI. */
 public interface Implementation {
-  void setBlock(@NotNull final BlockLocation location, @NotNull final Material material, @Nullable final MaterialData data, final boolean applyPhysics);
+  void setBlock(
+      @NotNull final BlockLocation location,
+      @NotNull final Material material,
+      @Nullable final MaterialData data,
+      final boolean applyPhysics);
 }
