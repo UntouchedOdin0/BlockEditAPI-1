@@ -15,19 +15,19 @@ import org.jetbrains.annotations.NotNull;
 @EqualsAndHashCode
 @ToString
 public final class BlockLocation {
-  @NotNull
-  private final String world;
+  @NotNull private final String world;
   private final int x, y, z;
 
   public BlockLocation(@NotNull final String world, final int x, final int y, final int z) {
     this.world = world;
     this.x = x;
-    this.y = Math.min(Bukkit.getWorld(world).getMaxHeight(), y);
+    this.y = Math.min(Bukkit.getWorld(world).getMaxHeight() - 1, y);
     this.z = z;
   }
 
   @NotNull
-  public static BlockLocation of(@NotNull final String world, final int x, final int y, final int z) {
+  public static BlockLocation of(
+      @NotNull final String world, final int x, final int y, final int z) {
     return new BlockLocation(world, x, y, z);
   }
 

@@ -43,6 +43,9 @@ public class NMS_v_1_8_R2_Handler implements Implementation {
       }
 
       world.notify(bp);
+    } else {
+      throw new UnsupportedOperationException(
+          "Specified option is not available for current implementation. (v1.8-R2)");
     }
   }
 }

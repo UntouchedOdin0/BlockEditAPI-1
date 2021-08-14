@@ -36,15 +36,14 @@ public class NMS_v_1_17_R1_Handler implements Implementation {
     if (option == BlockEditOption.NMS_SAFE) {
       world.setTypeAndData(bp, bd, applyPhysics ? 3 : 2);
     } else if (option == BlockEditOption.NMS_FAST) {
-      if (!location.getChunk().isLoaded()) {
-        location.getChunk().load(true);
-      }
-
       final Chunk chunk = world.getChunkAt(location.getX() >> 4, location.getZ() >> 4);
       final IBlockData oldData = chunk.getType(bp);
 
       chunk.setType(bp, bd, applyPhysics);
       world.notify(bp, oldData, bd, applyPhysics ? 3 : 2);
+    } else {
+      throw new UnsupportedOperationException(
+          "Specified option is not available for current implementation. (v1.17-R1)");
     }
   }
 }

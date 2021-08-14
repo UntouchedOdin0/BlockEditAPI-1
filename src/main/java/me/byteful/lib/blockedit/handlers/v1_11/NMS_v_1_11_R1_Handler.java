@@ -44,6 +44,9 @@ public class NMS_v_1_11_R1_Handler implements Implementation {
       }
 
       world.notify(bp, oldData, bd, applyPhysics ? 3 : 2);
+    } else {
+      throw new UnsupportedOperationException(
+          "Specified option is not available for current implementation. (v1.11-R1)");
     }
   }
 }

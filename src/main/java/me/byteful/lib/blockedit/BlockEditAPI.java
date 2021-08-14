@@ -170,6 +170,10 @@ public final class BlockEditAPI {
       boolean applyPhysics) {
     checkForInitialization();
 
+    if(!material.isBlock()) {
+      throw new IllegalArgumentException("Material (" + material.name() + ") is not a block material!");
+    }
+
     if (version >= 13) {
       impl.setBlock(BlockLocation.fromBlock(block), material, null, applyPhysics);
     } else {
@@ -193,6 +197,10 @@ public final class BlockEditAPI {
       boolean applyPhysics) {
     checkForInitialization();
 
+    if(!material.isBlock()) {
+      throw new IllegalArgumentException("Material (" + material.name() + ") is not a block material!");
+    }
+
     if (version >= 13) {
       impl.setBlock(BlockLocation.fromLocation(block), material, null, applyPhysics);
     } else {
@@ -215,6 +223,10 @@ public final class BlockEditAPI {
       @Nullable final MaterialData data,
       boolean applyPhysics) {
     checkForInitialization();
+
+    if(!material.isBlock()) {
+      throw new IllegalArgumentException("Material (" + material.name() + ") is not a block material!");
+    }
 
     if (version >= 13) {
       impl.setBlock(block, material, null, applyPhysics);
