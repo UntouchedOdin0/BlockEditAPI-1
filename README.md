@@ -4,7 +4,7 @@
 
 BlockEditAPI is a super easy-to-use library that saves a lot of time. It already does the NMS work for you, and it
 contains useful utilities that save plenty of time and reduce boilerplate code. BlockEditAPI performs really well. It
-can modify up to **2 million blocks per second**!
+can modify up to **15 million blocks per second**!
 
 # How does BlockEditAPI perform?
 
@@ -24,13 +24,17 @@ Modified 80k-90k blocks per second.
 
 Modified 1.7m-2.2m blocks per second.
 
-# Supported Versions & Softwares:
+### "NMS_Unsafe" Option:
+
+Modified 12.7m-14.1m blocks per second.
+
+# Supported Versions & Software:
 
 - CraftBukkit > 1.8-1.17.1
 - Spigot > 1.8-1.17.1
 - PaperSpigot > 1.8-1.17.1 <br>
 
-**Note: Other forks of softwares listed above may work. The software will need the Bukkit API present and optionally, NMS.**
+**Note: Other forks of software listed above may work. The software will need the Bukkit API present and optionally, NMS.**
 
 # Maven/Gradle Dependency:
 

@@ -1,5 +1,6 @@
 package me.byteful.lib.blockedit.handlers.v1_10;
 
+import com.google.common.base.Suppliers;
 import lombok.RequiredArgsConstructor;
 import me.byteful.lib.blockedit.BlockEditOption;
 import me.byteful.lib.blockedit.Implementation;
@@ -12,8 +13,22 @@ import org.bukkit.material.MaterialData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.Field;
+import java.util.function.Supplier;
+
 @RequiredArgsConstructor
 public class NMS_v_1_10_R1_Handler implements Implementation {
+  private static final Supplier<Field> CS_FIELD = Suppliers.memoize(() -> {
+    try {
+      final Field field = ChunkSection.class.getDeclaredField("nonEmptyBlockCount");
+      field.setAccessible(true);
+
+      return field;
+    } catch (NoSuchFieldException e) {
+      e.printStackTrace();
+      return null;
+    }
+  })::get;
   private final BlockEditOption option;
 
   @Override
@@ -28,25 +43,54 @@ public class NMS_v_1_10_R1_Handler implements Implementation {
         data == null
             ? CraftMagicNumbers.getBlock(material).getBlockData()
             : Block.getByCombinedId(material.getId() + (data.getData() << 12));
+    if (!location.getChunk().isLoaded()) {
+      location.getChunk().load(true);
+    }
+
+    final Chunk chunk = world.getChunkAt(location.getX() >> 4, location.getZ() >> 4);
+    final IBlockData oldData = chunk.getBlockData(bp);
 
     if (option == BlockEditOption.NMS_SAFE) {
       world.setTypeAndData(bp, bd, applyPhysics ? 3 : 2);
     } else if (option == BlockEditOption.NMS_FAST) {
-      if (!location.getChunk().isLoaded()) {
-        location.getChunk().load(true);
-      }
-
-      final Chunk chunk = world.getChunkAt(location.getX() >> 4, location.getZ() >> 4);
-      final IBlockData oldData = chunk.getBlockData(bp);
       chunk.a(bp, bd);
       if (applyPhysics) {
         world.update(bp, chunk.getBlockData(bp).getBlock());
       }
 
       world.notify(bp, oldData, bd, applyPhysics ? 3 : 2);
-    } else {
+    } else if(option == BlockEditOption.NMS_UNSAFE) {
+      ChunkSection cs = chunk.getSections()[location.getY() >> 4];
+
+      try {
+        if(cs == a(chunk) || cs == null) {
+          cs = new ChunkSection(location.getY() >> 4 << 4, true);
+          chunk.getSections()[location.getY() >> 4] = cs;
+        }
+      } catch (IllegalAccessException e) {
+        throw new RuntimeException(e);
+      }
+
+      cs.getBlocks().setBlock(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd);
+      world.notify(bp, oldData, bd, applyPhysics ? 3 : 2);
+      cs.recalcBlockCounts();
+    }  else {
       throw new UnsupportedOperationException(
           "Specified option is not available for current implementation. (v1.10-R1)");
     }
+  }
+
+  @Nullable
+  private ChunkSection a(Chunk chunk) throws IllegalAccessException {
+    ChunkSection[] var0 = chunk.getSections();
+
+    for(int var1 = var0.length - 1; var1 >= 0; --var1) {
+      ChunkSection var2 = var0[var1];
+      if (!(Chunk.a == var2 || CS_FIELD.get().getInt(var2) == 0)) {
+        return var2;
+      }
+    }
+
+    return null;
   }
 }
