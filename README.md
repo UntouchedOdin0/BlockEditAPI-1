@@ -44,7 +44,7 @@ Modified 12.7m-14.1m blocks per second.
 <dependency>
   <groupId>me.byteful.lib</groupId>
   <artifactId>blockeditapi</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
@@ -52,7 +52,7 @@ Modified 12.7m-14.1m blocks per second.
 
 ```kotlin
 dependencies {
-  compile "me.byteful.lib:blockeditapi:1.0.0"
+  compile "me.byteful.lib:blockeditapi:1.0.3"
 }
 ```
 
