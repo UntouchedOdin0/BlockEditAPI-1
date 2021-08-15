@@ -30,7 +30,7 @@ Modified 1.7m-2.2m blocks per second.
 - Spigot > 1.8-1.17.1
 - PaperSpigot > 1.8-1.17.1 <br>
 
-**Note: Other forks of softwares listed above may work. The fork will need the Bukkit API present and optionally, NMS.**
+**Note: Other forks of softwares listed above may work. The software will need the Bukkit API present and optionally, NMS.**
 
 # Maven/Gradle Dependency:
 
