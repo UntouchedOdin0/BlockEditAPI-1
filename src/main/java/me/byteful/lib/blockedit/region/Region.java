@@ -18,4 +18,25 @@ public interface Region extends Iterable<Block>, Cloneable {
    *  @return the number of blocks in the region
    */
   int getVolume();
+
+  /**
+   * Returns the size of the region on the X axis.
+   *
+   * @return size of region on x axis
+   */
+  int getSizeX();
+
+  /**
+   * Returns the size of the region on the Y axis.
+   *
+   * @return size of region on y axis
+   */
+  int getSizeY();
+
+  /**
+   * Returns the size of the region on the Z axis.
+   *
+   * @return size of region on z axis
+   */
+  int getSizeZ();
 }

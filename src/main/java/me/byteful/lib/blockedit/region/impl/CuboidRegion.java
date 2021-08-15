@@ -58,7 +58,22 @@ public class CuboidRegion implements Region {
 
   @Override
   public int getVolume() {
-    return ((this.pos2.getX() - this.pos1.getX()) + 1) * ((this.pos2.getY() - this.pos1.getY()) + 1) * ((this.pos2.getZ() - this.pos1.getZ()) + 1);
+    return getSizeX() * getSizeY() * getSizeZ();
+  }
+
+  @Override
+  public int getSizeX() {
+    return (Math.max(pos1.getX(), pos2.getX()) - Math.min(pos1.getX(), pos2.getX())) + 1;
+  }
+
+  @Override
+  public int getSizeY() {
+    return (Math.max(pos1.getY(), pos2.getY()) - Math.min(pos1.getY(), pos2.getY())) + 1;
+  }
+
+  @Override
+  public int getSizeZ() {
+    return (Math.max(pos1.getZ(), pos2.getZ()) - Math.min(pos1.getZ(), pos2.getZ())) + 1;
   }
 
   @Data
