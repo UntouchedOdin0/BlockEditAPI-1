@@ -7,7 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Data
 public class CuboidRegion implements Region {
@@ -40,6 +42,23 @@ public class CuboidRegion implements Region {
   @Override
   protected CuboidRegion clone() {
     return new CuboidRegion(pos1, pos2);
+  }
+
+  @Override
+  public List<Block> getBlocks() {
+    final Iterator<Block> iter = this.iterator();
+    final List<Block> list = new ArrayList<>();
+
+    while(iter.hasNext()) {
+      list.add(iter.next());
+    }
+
+    return list;
+  }
+
+  @Override
+  public int getVolume() {
+    return ((this.pos2.getX() - this.pos1.getX()) + 1) * ((this.pos2.getY() - this.pos1.getY()) + 1) * ((this.pos2.getZ() - this.pos1.getZ()) + 1);
   }
 
   @Data
