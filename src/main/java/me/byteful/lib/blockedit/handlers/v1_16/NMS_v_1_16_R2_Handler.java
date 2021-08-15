@@ -48,13 +48,8 @@ public class NMS_v_1_16_R2_Handler implements Implementation {
         chunk.getSections()[location.getY() >> 4] = cs;
       }
 
-      if(applyPhysics) {
-        cs.getBlocks().setBlock(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd);
-        world.notify(bp, oldData, bd, 3);
-      } else {
-        cs.getBlocks().b(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd);
-        world.notify(bp, oldData, bd, 2);
-      }
+      cs.setType(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd, applyPhysics);
+      world.notify(bp, oldData, bd, applyPhysics ? 3 : 2);
       cs.recalcBlockCounts();
     } else {
       throw new UnsupportedOperationException(

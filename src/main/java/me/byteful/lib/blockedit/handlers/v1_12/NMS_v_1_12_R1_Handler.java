@@ -72,7 +72,12 @@ public class NMS_v_1_12_R1_Handler implements Implementation {
         throw new RuntimeException(e);
       }
 
-      cs.getBlocks().setBlock(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd);
+      cs.setType(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd);
+
+      if(applyPhysics) {
+        world.update(bp, bd.getBlock(), true);
+      }
+
       world.notify(bp, oldData, bd, applyPhysics ? 3 : 2);
       cs.recalcBlockCounts();
     } else {

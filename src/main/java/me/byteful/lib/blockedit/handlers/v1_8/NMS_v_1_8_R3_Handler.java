@@ -56,8 +56,9 @@ public class NMS_v_1_8_R3_Handler implements Implementation {
       }
 
       cs.setType(location.getX() & 15, location.getY() & 15, location.getZ() & 15, bd);
-      if (applyPhysics) {
-        world.update(bp, chunk.getType(bp));
+
+      if(applyPhysics) {
+        world.update(bp, bd.getBlock());
       }
 
       world.notify(bp);
