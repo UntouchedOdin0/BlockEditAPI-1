@@ -17,7 +17,9 @@ public class BukkitHandler implements Implementation {
       boolean applyPhysics) {
     final BlockState state = location.getBlock().getState();
     state.setType(material);
-    state.setData(data);
+    if (data != null) {
+      state.setData(data);
+    }
     state.update(true, applyPhysics);
   }
 }
