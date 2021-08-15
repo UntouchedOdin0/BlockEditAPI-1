@@ -141,9 +141,13 @@ public final class BlockEditAPI {
     }
   }
 
-  private static void checkForInitialization() {
+  private static void runChecks() {
     if (impl == null) {
       throw new IllegalStateException("Please initialize BlockEditAPI before using it!");
+    }
+
+    if(!Bukkit.isPrimaryThread()) {
+      throw new IllegalStateException("Cannot run operations asynchronously with BlockEditAPI!");
     }
   }
 
@@ -168,7 +172,7 @@ public final class BlockEditAPI {
       @NotNull final Material material,
       @Nullable final MaterialData data,
       boolean applyPhysics) {
-    checkForInitialization();
+    runChecks();
 
     if(!material.isBlock()) {
       throw new IllegalArgumentException("Material (" + material.name() + ") is not a block material!");
@@ -195,7 +199,7 @@ public final class BlockEditAPI {
       @NotNull final Material material,
       @Nullable final MaterialData data,
       boolean applyPhysics) {
-    checkForInitialization();
+    runChecks();
 
     if(!material.isBlock()) {
       throw new IllegalArgumentException("Material (" + material.name() + ") is not a block material!");
@@ -222,7 +226,7 @@ public final class BlockEditAPI {
       @NotNull final Material material,
       @Nullable final MaterialData data,
       boolean applyPhysics) {
-    checkForInitialization();
+    runChecks();
 
     if(!material.isBlock()) {
       throw new IllegalArgumentException("Material (" + material.name() + ") is not a block material!");
@@ -249,7 +253,7 @@ public final class BlockEditAPI {
       @NotNull final Material material,
       @Nullable final MaterialData data,
       boolean applyPhysics) {
-    checkForInitialization();
+    runChecks();
 
     blocks.forEach(loc -> setBlock(loc, material, data, applyPhysics));
   }
@@ -268,7 +272,7 @@ public final class BlockEditAPI {
       @NotNull final Material material,
       @Nullable final MaterialData data,
       boolean applyPhysics) {
-    checkForInitialization();
+    runChecks();
 
     for (Block block : region) {
       setBlock(block, material, data, applyPhysics);
@@ -289,7 +293,7 @@ public final class BlockEditAPI {
       @NotNull final List<Material> materials,
       @Nullable final List<MaterialData> data,
       boolean applyPhysics) {
-    checkForInitialization();
+    runChecks();
 
     if (data != null && materials.size() != data.size()) {
       throw new IllegalArgumentException("Materials and data lists have to be the same size!");
