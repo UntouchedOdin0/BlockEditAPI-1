@@ -41,19 +41,30 @@ Modified 12.7m-14.1m blocks per second.
 ### Maven:
 
 ```xml
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+```
+```xml
 <dependency>
-  <groupId>me.byteful.lib</groupId>
-  <artifactId>blockeditapi</artifactId>
+  <groupId>com.github.byteful</groupId>
+  <artifactId>BlockEditAPI</artifactId>
   <version>1.0.3</version>
 </dependency>
 ```
 
 ### Gradle
 
-```kotlin
+```groovy
+repositories {
+  maven { url 'https://jitpack.io' }
+}
+```
+```groovy
 dependencies {
-  compile "me.byteful.lib:blockeditapi:1.0.3"
+  implementation 'com.github.byteful:BlockEditAPI:1.0.3'
 }
 ```
 
-**[ ! ] Note: Make sure you relocate BlockEditAPI to prevent any dependency collison issues during runtime. [ ! ]**
+**[ ! ] Note: Make sure you relocate BlockEditAPI to prevent any dependency collisions during runtime. [ ! ]**
